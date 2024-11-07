@@ -2,6 +2,7 @@
   "name": "untitled",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "homepage": "https://adreniln.github.io/epic_tips_tricks",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -27,7 +28,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [

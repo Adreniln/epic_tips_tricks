@@ -47,6 +47,30 @@ const EpicQuickTips = () => {
     setSelectedItem(null);
   };
 
+  const Breadcrumbs = ({ section, item }: { section?: string; item?: string }) => (
+  <nav className="flex px-6 py-2 text-sm text-gray-600 items-center space-x-2">
+    <span className="hover:text-blue-600 cursor-pointer"
+          onClick={() => handleBack()}>
+      Home
+    </span>
+    {section && (
+      <>
+        <span className="text-gray-400">/</span>
+        <span className={!item ? 'text-blue-600' : 'hover:text-blue-600 cursor-pointer'}
+              onClick={() => item && handleBack()}>
+          {section}
+        </span>
+      </>
+    )}
+    {item && (
+      <>
+        <span className="text-gray-400">/</span>
+        <span className="text-blue-600">{item}</span>
+      </>
+    )}
+  </nav>
+  );
+
   const handleItemSelection = (sectionKey: string, itemText: string) => {
     setIsTransitioning(true);
     setSelectedSection(sectionKey);
@@ -439,6 +463,11 @@ const EpicQuickTips = () => {
             </p>
           </CardHeader>
           <CardContent className="p-6">
+            {/* Place Breadcrumbs here */}
+            <Breadcrumbs
+              section={selectedSection ? sections[selectedSection].title : undefined}
+              item={selectedItem}
+            />
             <div className={`transition-all duration-300 ease-in-out ${selectedItem ? 'flex flex-col md:flex-row gap-6' : ''}`}>
               <div className={`
                 transition-all duration-300 ease-in-out

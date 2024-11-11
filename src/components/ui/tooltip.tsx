@@ -39,34 +39,33 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
 
     const tooltipStyles = {
       right: cn(
-        "absolute z-50 px-3 py-2 text-sm text-white bg-gray-900 rounded-md shadow-lg",
-        "left-full top-1/2 transform translate-x-2 -translate-y-1/2",
-        "w-64" // Fixed width that works well for most tooltip content
+        "absolute px-3 py-2 text-sm text-white bg-gray-900 rounded-md shadow-lg",
+        "left-full top-1/2",
+        "-translate-y-1/2 translate-x-2",
+        "w-64 z-50"
       ),
       left: cn(
-        "absolute z-50 px-3 py-2 text-sm text-white bg-gray-900 rounded-md shadow-lg",
-        "right-full top-1/2 transform -translate-x-2 -translate-y-1/2",
-        "w-64" // Same width for consistency
+        "absolute px-3 py-2 text-sm text-white bg-gray-900 rounded-md shadow-lg",
+        "right-full top-1/2",
+        "-translate-y-1/2 -translate-x-2",
+        "w-64 z-50"
       )
     };
 
     return (
       <div
-        className="relative inline-block w-full"
+        className="relative inline-block overflow-visible"
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
         ref={containerRef}
       >
-        <div ref={ref}>
+        <div ref={ref} className="overflow-visible">
           {children}
         </div>
         {isVisible && (
           <div
             ref={tooltipRef}
-            className={cn(
-              tooltipStyles[position],
-              className
-            )}
+            className={cn(tooltipStyles[position], className)}
           >
             {content}
           </div>

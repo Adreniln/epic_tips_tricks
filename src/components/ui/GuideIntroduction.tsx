@@ -30,7 +30,7 @@ const GuideIntroduction = () => {
     },
     {
       title: "Watch and Learn",
-      description: "Many features include step-by-step instructions and video tutorials to help you master new workflows.",
+      description: "The features include step-by-step instructions and video tutorials to help you master new workflows.",
       icon: <ArrowRight className="w-6 h-6 text-blue-500" />
     }
   ];
